@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Manage apexStore products." />
+    <title>Administrator | apexStore</title>
+    <link rel="stylesheet" href="stylish/styles.css" />
+    <script type="module" src="javascripts/admin.js"></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="welcome-card" aria-labelledby="welcome-title">
+        <div class="brand-panel">
+          <a class="brand" href="index.html" aria-label="apexStore home">
+            <span class="brand-mark" aria-hidden="true">A</span>
+            <span>apex<span class="brand-light">Store</span></span>
+          </a>
+
+          <div class="brand-message">
+            <p class="eyebrow">Store management</p>
+            <h1 id="welcome-title">Your store, all in one place.</h1>
+            <p class="brand-description">
+              Update your electronics catalog and keep an eye on inventory.
+            </p>
+          </div>
+
+          <p class="brand-footnote">Sample administrator experience.</p>
+        </div>
+
+        <div class="access-panel">
+          <div class="access-heading">
+            <p class="eyebrow">Administrator</p>
+            <h2>Sign in to your store</h2>
+            <p>Use the sample account to manage products.</p>
+          </div>
+
+          <section id="adminAccessCard">
+            <p class="demo-warning">
+              Demo credentials: <strong>admin@apexstore.test</strong> /
+              <strong>admin123</strong>. This frontend-only login is for demonstration only.
+            </p>
+            <form id="adminLoginForm">
+              <label for="adminEmail">Email address</label>
+              <input
+                id="adminEmail"
+                name="email"
+                type="email"
+                placeholder="admin@apexstore.test"
+                autocomplete="username"
+                required
+              />
+
+              <label for="adminPassword">Password</label>
+              <input
+                id="adminPassword"
+                name="password"
+                type="password"
+                placeholder="Enter the demo password"
+                autocomplete="current-password"
+                required
+              />
+
+              <button class="primary-button" type="submit">Sign in</button>
+              <p class="form-message" id="adminMessage" role="status" aria-live="polite"></p>
+            </form>
+          </section>
+        </div>
+      </section>
+      <p class="page-note"><a href="index.html">Back to home</a></p>
+    </main>
+
+    <section class="admin-dashboard" id="adminDashboard" aria-labelledby="dashboardTitle" hidden>
+      <div class="dashboard-heading">
+        <div>
+          <p class="eyebrow">Sample administrator</p>
+          <h1 id="dashboardTitle">Product management</h1>
+        </div>
+        <button class="secondary-button" id="signOutButton" type="button">Sign out</button>
+      </div>
+
+      <p class="demo-warning">
+        Demo only: changes are saved in this browser and are not shared with customers or other devices.
+      </p>
+
+      <nav class="dashboard-nav" aria-label="Admin pages">
+        <a class="dashboard-tab is-active" href="admin.html" aria-current="page">Product management</a>
+        <a class="dashboard-tab" href="bills.html">Bills review</a>
+        <a class="dashboard-tab" href="statistics.html">About statistics</a>
+      </nav>
+
+      <section class="admin-panel" aria-labelledby="productManagementTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Catalog</p>
+            <h2 id="productManagementTitle">Product management</h2>
+          </div>
+          <button class="primary-button add-product-button" id="addProductButton" type="button">
+            Add product
+          </button>
+        </div>
+
+        <p id="productCount" class="product-count"></p>
+        <p class="form-message" id="productMessage" role="status" aria-live="polite"></p>
+
+        <div class="table-scroll">
+          <table class="product-table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col"><span class="visually-hidden">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="productTableBody"></tbody>
+          </table>
+        </div>
+
+        <form class="product-form" id="productForm" hidden>
+          <div class="form-heading">
+            <h2 id="productFormTitle">Add product</h2>
+            <button class="icon-button" id="cancelProductButton" type="button" aria-label="Close product form">
+              ×
+            </button>
+          </div>
+          <input id="productId" name="id" type="hidden" />
+
+          <label for="productName">Name</label>
+          <input id="productName" name="name" type="text" maxlength="80" required />
+
+          <label for="productCategory">Category</label>
+          <input id="productCategory" name="category" type="text" maxlength="40" required />
+
+          <div class="form-fields-row">
+            <div>
+              <label for="productPrice">Price ($)</label>
+              <input id="productPrice" name="price" type="number" min="0" step="0.01" required />
+            </div>
+            <div>
+              <label for="productStock">Stock</label>
+              <input id="productStock" name="stock" type="number" min="0" step="1" required />
+            </div>
+          </div>
+
+          <div class="product-form-actions">
+            <button class="secondary-button" id="discardProductButton" type="button">Cancel</button>
+            <button class="primary-button" id="saveProductButton" type="submit">Save product</button>
+          </div>
+        </form>
+      </section>
+
+    </section>
+  </body>
+</html>
